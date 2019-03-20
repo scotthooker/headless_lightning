@@ -1,4 +1,5 @@
 {
   "name": "drupal/content_model_ui",
-  "type": "drupal-module"
+  "type": "drupal-module",
+  "description": "An administrative interface to build data and content models for your API."
 }

@@ -23,32 +23,37 @@ addons:
   chrome: stable
 
 before_install:
-  - phpenv config-add ./tests/travis.php.ini
-  - phpenv rehash
-
   - composer self-update
   - composer --version
   - google-chrome-stable --version
 
   - export ORCA=$TRAVIS_BUILD_DIR/../orca
   - export ORCA_FIXTURE=$ORCA-build
-  - export ORCA_SUT=acquia/headless_lightning
+  - export ORCA_SUT_NAME=acquia/headless_lightning
+  - export ORCA_SUT_BRANCH=master
+  - export ORCA_PACKAGES_CONFIG_ALTER=../lightning/tests/packages.yml
 
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - export PATH="$ORCA/bin:$PATH"
   - export PATH="$ORCA/vendor/bin:$PATH"
   - export PATH="$ORCA_FIXTURE/vendor/bin:$PATH"
 
+  # Install ORCA and prepare the environment.
+  - git clone --branch master --depth 1 https://github.com/acquia/orca.git $ORCA
+  - $ORCA/bin/travis/before_install.sh
+
 install:
-  # Install ORCA so that we can build the fixture using that.
-  - git clone --branch lightning --depth 1 https://github.com/acquia/orca.git ../orca
-  - "$ORCA/bin/travis/install master"
+  - $ORCA/bin/travis/install.sh
 
   # Run ORCA static analysis tools.
   - orca static-analysis:run ./
 
   # Use ORCA to build the code base.
-  - orca fixture:init -f --sut $ORCA_SUT --dev --profile headless_lightning
+  - orca fixture:init -f --sut $ORCA_SUT_NAME --core 8.7.x-dev --dev --profile headless_lightning
+  # Install dev dependencies.
+  - composer require --dev drupal/console --working-dir $ORCA_FIXTURE --no-update
+  # Update in a separate step to prevent lock file version conflicts.
+  - composer update --working-dir $ORCA_FIXTURE
 
 before_script:
   - cd $ORCA_FIXTURE/docroot

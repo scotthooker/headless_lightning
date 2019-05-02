@@ -8,6 +8,6 @@ drupal/lightning_api:
   version_dev: 4.x-dev
 
 acquia/headless_lightning:
-  url: ../headless_lightning
+  url: ../headless-lightning
   type: drupal-profile
   version_dev: dev-master

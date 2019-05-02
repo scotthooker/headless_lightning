@@ -31,7 +31,7 @@ before_install:
   - export ORCA_FIXTURE=$ORCA-build
   - export ORCA_SUT_NAME=acquia/headless_lightning
   - export ORCA_SUT_BRANCH=master
-  - export ORCA_PACKAGES_CONFIG_ALTER=../lightning/tests/packages.yml
+  - export ORCA_PACKAGES_CONFIG_ALTER=../headless_lightning/tests/packages.yml
 
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - export PATH="$ORCA/bin:$PATH"

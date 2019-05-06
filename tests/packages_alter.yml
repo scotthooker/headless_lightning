@@ -1,12 +1,6 @@
 ---
 acquia/lightning: ~
 
-drupal/lightning_core:
-  version_dev: 4.x-dev
-
-drupal/lightning_api:
-  version_dev: 4.x-dev
-
 acquia/headless_lightning:
   url: ../headless-lightning
   type: drupal-profile

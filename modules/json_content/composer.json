@@ -1,5 +1,10 @@
 {
-  "name": "drupal/json_content",
-  "type": "drupal-module",
-  "description": "Presentation layer blanket for content that is only consumed via an API."
+    "name": "drupal/json_content",
+    "type": "drupal-module",
+    "description": "Presentation layer blanket for content that is only consumed via an API.",
+    "autoload": {
+        "psr-4": {
+            "Drupal\\Tests\\json_content\\": "tests/src"
+        }
+    }
 }

@@ -48,7 +48,7 @@ install:
   - orca static-analysis:run ./
 
   # Use ORCA to build the code base.
-  - orca fixture:init -f --sut $ORCA_SUT --sut-only --dev --profile headless_lightning
+  - orca fixture:init -f --sut $ORCA_SUT --sut-only --core ~8.6.0 --dev --profile headless_lightning
 
 before_script:
   - cd $ORCA_FIXTURE/docroot

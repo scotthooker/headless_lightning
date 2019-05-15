@@ -41,7 +41,7 @@ before_install:
 
 install:
   # Install ORCA so that we can build the fixture using that.
-  - git clone --depth 1 --branch v1.0.0-alpha11 https://github.com/acquia/orca.git ../orca
+  - git clone --depth 1 --branch lightning https://github.com/acquia/orca.git ../orca
   - "$ORCA/bin/travis/install master"
 
   # Run ORCA static analysis tools.

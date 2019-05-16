@@ -16,8 +16,9 @@ env:
   global:
     - ORCA_SUT_NAME=acquia/headless_lightning
     - ORCA_SUT_BRANCH=8.x-1.x
-    - ORCA_VERSION=v1.0.0-alpha11
+    - ORCA_VERSION=v1.0.0-alpha12
     - ORCA_PACKAGES_CONFIG_ALTER=../headless-lightning/tests/packages_alter.yml
+    - ORCA_FIXTURE_PROFILE=headless_lightning
 
 matrix:
   fast_finish: true
@@ -27,6 +28,7 @@ matrix:
     - { name: "Deprecated code scan", env: ORCA_JOB=DEPRECATED_CODE_SCAN_SUT }
     - { name: "Isolated test w/ recommended package versions", env: ORCA_JOB=ISOLATED_RECOMMENDED }
     - { name: "Integrated test w/ recommended package versions", env: ORCA_JOB=INTEGRATED_RECOMMENDED }
+    - { name: "Integrated test w/ recommended package versions & previous minor release of Drupal core", env: ORCA_JOB=CORE_PREVIOUS }
     - { name: "Isolated test w/ dev package versions", env: ORCA_JOB=ISOLATED_DEV }
     - { name: "Integrated test w/ dev package versions", env: ORCA_JOB=INTEGRATED_DEV }
     - { name: "Integrated test w/ dev package versions & next minor dev version of Drupal core", env: ORCA_JOB=CORE_NEXT }
